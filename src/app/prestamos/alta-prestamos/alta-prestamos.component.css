@@ -1,0 +1,32 @@
+* {
+  margin: 0 auto;
+}
+
+mat-card {
+  display: flex;
+  padding: 2rem;
+  justify-content: center;
+  margin: auto;
+}
+input {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+button {
+  width: 300px;
+  margin: auto 10px;
+}
+mat-card-title {
+  margin-bottom: 2rem;
+}
+mat-select {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.botones {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+}

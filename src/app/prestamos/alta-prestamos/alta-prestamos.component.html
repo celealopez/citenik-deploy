@@ -1,0 +1,107 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <form
+    [formGroup]="formPrestamo"
+    #formDirective="ngForm"
+    (ngSubmit)="agregarPrestamo(formPrestamo, formDirective)"
+  >
+    <mat-card class="mat-elevation-z15 row justify-content-md-center">
+      <mat-card-title class="text-center">Nuevo Prestamo</mat-card-title>
+
+      <mat-form-field appearance="fill" class="text-start col-14">
+        <mat-label class="fs-6">Selecciona el plan</mat-label>
+        <mat-select
+          formControlName="planId"
+          (selectionChange)="setCuotasTotales()"
+        >
+          <mat-option value="1"> Tradicional Plano </mat-option>
+          <mat-option value="2"> Plan Express Plano </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="col-lg-6" appearance="fill">
+        <mat-label>Id del cliente</mat-label>
+        <input
+          type="text"
+          placeholder="Busca por id, nombre o cuit"
+          aria-label="Cliente"
+          matInput
+          [matAutocomplete]="auto"
+          (keyup)="applyFilter($event)"
+          formControlName="clienteId"
+        />
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let cliente of clientesFiltrados"
+            [value]="cliente.id"
+          >
+            Id: {{ cliente.id }} | {{ cliente.nombre }} | {{ cliente.cuit }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field color="primary" class="col-lg-6" appearance="fill">
+        <mat-label>Capital</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="capital"
+          [placeholder]="
+            prestamo.planId == 1
+              ? 'Min: $50.000. Máx: $10.000.000'
+              : 'Min: $1.000. Máx: $30.000'
+          "
+          [min]="prestamo.planId == 1 ? 50000 : 1000"
+          [max]="prestamo.planId == 1 ? 10000000 : 30000"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="col-lg-4 mb-2" appearance="fill">
+        <mat-label>Elige una fecha de otorgamiento</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="fechaOtorgamiento"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field color="primary" class="col-lg-4" appearance="fill">
+        <mat-label>Cuotas totales</mat-label>
+        <input
+          matInput
+          type="number"
+          formControlName="cuotasTotales"
+          [placeholder]="
+            prestamo.planId == 1 ? 'Min: 12. Máx: 72' : '6 cuotas únicamente'
+          "
+          [min]="prestamo.planId == 1 ? 12 : 6"
+          [max]="prestamo.planId == 1 ? 72 : 6"
+        />
+      </mat-form-field>
+
+      <mat-form-field color="primary" class="col-lg-4" appearance="fill">
+        <mat-label>Selecciona día de vencimiento</mat-label>
+        <mat-select formControlName="fechaDeVencimiento">
+          <mat-option value="10">10</mat-option>
+          <mat-option value="15">15</mat-option>
+          <mat-option value="20">20</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="botones">
+        <div>
+          <a routerLink="/listaPrestamos">
+            <button type="button" class="btn btn-danger">Cancelar</button>
+          </a>
+          <button class="btn btn-primary" type="submit">Agregar</button>
+        </div>
+      </div>
+    </mat-card>
+  </form>
+</div>

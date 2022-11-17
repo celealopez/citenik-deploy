@@ -1,0 +1,46 @@
+<div class="card border border-primary">
+  <div class="card-body">
+    <h2 class="text-center">Top 5 de Préstamos más rentables</h2>
+    <div class="position-absolute top-50 start-50 translate-middle" *ngIf="!canvaEstaCargado">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div *ngIf="canvaEstaCargado">
+    <table class="table border-primary text-center">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Deuda</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>{{ data[0].nombreCliente }}</td>
+          <td>${{ data[0].interesesPagados }}</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>{{ data[1].nombreCliente }}</td>
+          <td>${{ data[1].interesesPagados }}</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>{{ data[2].nombreCliente }}</td>
+          <td>${{ data[2].interesesPagados }}</td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>{{ data[3].nombreCliente }}</td>
+          <td>${{ data[3].interesesPagados }}</td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>{{ data[4].nombreCliente }}</td>
+          <td>${{ data[4].interesesPagados }}</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>

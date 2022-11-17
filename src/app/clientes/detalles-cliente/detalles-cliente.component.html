@@ -1,0 +1,80 @@
+<h1 mat-dialog-title class="text-center">
+  <strong>Detalles  del Cliente
+    <span *ngIf="clienteEstaCargado">id: {{cliente.id}}</span>
+  </strong>
+</h1>
+<hr />
+<mat-dialog-content mat-dialog-content>
+  <div class="card container border border-primary">
+    <div class="card-spinner" *ngIf="!clienteEstaCargado">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div class="card-body" *ngIf="clienteEstaCargado">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col-3"></th>
+            <th scope="col-3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <mat-accordion class="acordeon">
+              <mat-expansion-panel (opened)="clientesDesplegado = true"
+                                  (closed)="clientesDesplegado = false">
+                <mat-expansion-panel-header>
+                  <th scope="row">
+                    <mat-panel-title>
+                      Cliente:
+                    </mat-panel-title>
+                  </th>
+                  <td>
+                    <mat-panel-description>
+                      {{cliente.nombre}}
+                    </mat-panel-description>
+                  </td>
+                </mat-expansion-panel-header>
+                <tr>
+                  <th scope="row">Fecha de nacimiento:</th>
+                  <td>{{cliente.fechaNacimiento| date: "dd/MM/yyyy"}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">Cuit</th>
+                  <td>{{cliente.cuit}}</td>
+                </tr>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </tr>
+          <tr *ngIf="cliente.prestamosActivos != 0">
+
+            <th scope="row">Cantidad de Prestamos Activos
+              :</th>
+
+           <td>{{cliente.prestamosActivos}}</td>
+
+
+
+          </tr>
+
+          <tr *ngIf="cliente.deudaTotal != 0">
+            <th scope="row">Deuda total impaga (capital e interés)
+              :</th>
+
+           <td>{{cliente.deudaTotal}}</td>
+          </tr>
+
+
+          <tr>
+
+          </tr>
+          <tr>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Cerrar</button>
+    </div>
+

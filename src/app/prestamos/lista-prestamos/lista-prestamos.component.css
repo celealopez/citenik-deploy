@@ -1,0 +1,33 @@
+.container {
+  padding-bottom: 3.7rem;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+}
+
+.disabled {
+  border: none;
+}
+
+.mat-drawer-container {
+  z-index: 0;
+}
+
+.drawer-container{
+  display: flex;
+  flex-direction: column;
+  width: 475px;
+}
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+.mat-row:hover .mat-cell {
+  font-weight: bold;
+}

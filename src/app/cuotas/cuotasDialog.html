@@ -1,0 +1,65 @@
+<h1 mat-dialog-title class="text-center">
+  <strong>Cuota número {{cuotaEstaCargada ? cuotaAPagar.cuotaNumero : ""}}</strong>
+</h1>
+<hr />
+<mat-dialog-content mat-dialog-content>
+  <div class="card container border border-primary">
+    <div class="card-spinner" *ngIf="!cuotaEstaCargada">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div class="card-body" *ngIf="cuotaEstaCargada">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col-3"></th>
+            <th scope="col-3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Fecha de vencimiento:</th>
+            <td>{{cuotaAPagar.fechaDeVencimiento | date: "dd/MM/yyyy"}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Días de demora:</th>
+            <td>{{cuotaAPagar.diasDeDemora}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Gastos otorgamiento:</th>
+            <td>${{cuotaAPagar.gastosOtorgamiento}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Monto cuota</th>
+            <td>${{cuotaAPagar.capital}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Intereses financieros:</th>
+            <td>${{cuotaAPagar.interesesFinancieros}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Intereses punitorios:</th>
+            <td>${{cuotaAPagar.interesesPunitorios}}</td>
+          </tr>
+          <tr class="table-secondary">
+            <th scope="row">Monto total:</th>
+            <th>${{cuotaAPagar.montoTotalCuota}}</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <mat-dialog-actions align="center">
+    <button mat-button mat-dialog-close class="btn btn-danger col-6">
+      Cancel
+    </button>
+    <button
+      mat-button
+      class="btn btn-primary col-10"
+      type="submit"
+      (click)="pagarCuota()"
+    >
+      Pagar
+    </button>
+  </mat-dialog-actions>
+</mat-dialog-content>

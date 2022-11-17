@@ -1,0 +1,108 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <mat-card class="mat-elevation-z15">
+
+    <div class="container--title d-flex justify-content-between">
+      <mat-card-title class="text-center">Lista de Clientes</mat-card-title>
+      <a routerLink="/nuevoCliente">
+        <button type="button" class="btn btn-primary btn-sm">
+          Nuevo cliente
+        </button>
+      </a>
+    </div>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Buscar</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Buscar cliente"
+        #input
+      />
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" class="container-fluid">
+      <!-- Name Column -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre completo</th>
+        <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="cuit">
+        <th mat-header-cell *matHeaderCellDef>Cuit</th>
+        <td mat-cell *matCellDef="let element">{{ element.cuit }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fechaNacimiento">
+        <th mat-header-cell *matHeaderCellDef>Fecha de nacimiento</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.fechaNacimiento | date: "dd/MM/yyyy" }}
+        </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="activo">
+        <th mat-header-cell *matHeaderCellDef>Estado</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.activo | booleanATexto: "activo":"inactivo" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones2">
+        <th mat-header-cell *matHeaderCellDef>Editar</th>
+        <td mat-cell *matCellDef="let element">
+          <button class="btn">
+            <mat-icon color="primary" (click)="editar(element.id)"
+              >edit</mat-icon
+            >
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <!--<th mat-header-cell *matHeaderCellDef > Desactivar / Editar
+          <td mat-cell *matCellDef="let element">
+
+                 <button class="btn"><mat-icon color="warn" (click)="borrarPersona(element.id)">person_off</mat-icon> </button>
+                 <button class="btn"><mat-icon color="primary" (click)="editar(element.id)">edit</mat-icon> </button>
+
+          </td>
+        </th>-->
+
+        <th mat-header-cell *matHeaderCellDef>Desactivar</th>
+
+        <td mat-cell *matCellDef="let element">
+          <ng-template [ngIf]="element.activo === 1" [ngIfElse]="accentIcon">
+            <button class="btn">
+              <mat-icon color="warn" (click)="borrarPersona(element.id)"
+                >person_off</mat-icon
+              >
+            </button>
+          </ng-template>
+          <ng-template #accentIcon>
+            <button class="btn disabled">
+              <mat-icon color="accent">person_off</mat-icon>
+            </button>
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row (click)="mostrarDetallesCliente(row)" *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">Cargando Datos..{{ input.value }}</td>
+      </tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 15]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </mat-card>
+</div>

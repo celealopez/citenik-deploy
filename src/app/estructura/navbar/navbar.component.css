@@ -1,0 +1,10 @@
+nav {
+  font-size: 18px;
+}
+a {
+  color: white;
+  margin-right: 10px;
+}
+a:hover {
+  transform: scale(1.1);
+}

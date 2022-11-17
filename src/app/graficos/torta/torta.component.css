@@ -1,0 +1,31 @@
+mat-card-title {
+  padding: 1rem;
+  padding-bottom: 1rem;
+}
+mat-card {
+  margin-left: 120px;
+  margin-right: 120px;
+  padding-bottom: 1rem;
+
+}
+
+.container {
+  padding-bottom: 1.5rem;
+}
+
+h2 {
+  padding: 1rem;
+}
+.division {
+  margin-top: 1rem;
+}
+.card-spinner {
+  margin: 8rem;
+
+  align-content: center;
+}
+.card{
+  padding-top: 3em;
+  border: 0;
+
+}

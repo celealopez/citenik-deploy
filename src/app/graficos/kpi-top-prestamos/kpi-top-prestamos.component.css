@@ -1,0 +1,14 @@
+.card {
+  padding: 1rem;
+}
+
+tr,
+th,
+td {
+  border: 0;
+}
+.card-spinner {
+  margin: 8rem;
+
+  align-content: center;
+}

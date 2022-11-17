@@ -1,0 +1,84 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <mat-card class="mat-elevation-z15 row">
+    <mat-card-title class="text-center">Editar Plan</mat-card-title>
+
+    <mat-form-field class="col-12" appearance="fill">
+      <mat-label>Nombre del Plan</mat-label>
+      <input matInput [(ngModel)]="plan.nombre" required />
+    </mat-form-field>
+
+    <mat-form-field color="primary" class="col-4" appearance="fill">
+      <mat-label>TNA</mat-label>
+      <input matInput [(ngModel)]="plan.tna" required />
+    </mat-form-field>
+
+    <mat-form-field color="primary" class="col-4" appearance="fill">
+      <mat-label>Duración mínima de cuotas</mat-label>
+      <input matInput [(ngModel)]="plan.duracionMinimaCuotas" required />
+    </mat-form-field>
+
+    <mat-form-field color="primary" class="col-4" appearance="fill">
+      <mat-label>Duración máxima de cuotas</mat-label>
+      <input matInput [(ngModel)]="plan.duracionMaximaCuotas" required />
+    </mat-form-field>
+
+    <mat-form-field color="primary" class="col-6" appearance="fill">
+      <mat-label>Monto Mínimo</mat-label>
+      <input matInput [(ngModel)]="plan.montoMinimo" required />
+    </mat-form-field>
+
+    <mat-form-field color="primary" class="col-6" appearance="fill">
+      <mat-label>Monto Máximo</mat-label>
+      <input matInput [(ngModel)]="plan.montoMaximo" required />
+    </mat-form-field>
+
+    <mat-form-field color="primary" class="col-4" appearance="fill">
+      <mat-label>Edad Máxima</mat-label>
+      <input matInput [(ngModel)]="plan.edadMaxima" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="text-start col-4">
+      <mat-label>Precancelación</mat-label>
+      <mat-select [(ngModel)]="plan.precancelacion">
+        <mat-option value="1"> Activo </mat-option>
+        <mat-option value="0"> Inactivo </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field color="primary" class="col-4" appearance="fill">
+      <mat-label>Cuota mínima de cancelación</mat-label>
+      <input matInput [(ngModel)]="plan.precancelacionCuotaMinima" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="text-start col-4">
+      <mat-label>Estado</mat-label>
+      <mat-select [(ngModel)]="plan.vigencia">
+        <mat-option value="1"> Activo </mat-option>
+        <mat-option value="0"> Inactivo </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field color="primary" class="col-4" appearance="fill">
+      <mat-label>Multa de precancelación</mat-label>
+      <input matInput [(ngModel)]="plan.precancelacionMulta" required />
+    </mat-form-field>
+
+    <mat-form-field color="primary" class="col-4" appearance="fill">
+      <mat-label>Costo administrativo</mat-label>
+      <input matInput [(ngModel)]="plan.costoAdministrativo" required />
+    </mat-form-field>
+
+    <div class="botones">
+      <div>
+        <a routerLink="/listaPlanes">
+          <button type="button" class="btn btn-danger">Cancelar</button>
+        </a>
+        <button class="btn btn-primary" (click)="editarPlan(plan)">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,90 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <form
+    [formGroup]="formPlanes"
+    #formDirective="ngForm"
+    (ngSubmit)="agregarPlan(formPlanes, formDirective)"
+  >
+    <mat-card class="mat-elevation-z15 fondo">
+      <div class="row justify-content-md-center">
+        <mat-card-title class="text-center">Nuevo Plan</mat-card-title>
+
+        <mat-form-field class="col-lg-12" appearance="fill">
+          <mat-label class="fs-6">Nombre del Plan</mat-label>
+          <input matInput formControlName="nombre" />
+        </mat-form-field>
+
+        <mat-form-field color="primary" class="col-lg-4" appearance="fill">
+          <mat-label class="fs-6">TNA</mat-label>
+          <input matInput formControlName="tna" />
+        </mat-form-field>
+
+        <mat-form-field color="primary" class="col-lg-4" appearance="fill">
+          <mat-label class="fs-6">Duración mínima de cuotas</mat-label>
+          <input matInput formControlName="duracionMinimaCuotas" />
+        </mat-form-field>
+
+        <mat-form-field color="primary" class="col-lg-4" appearance="fill">
+          <mat-label class="fs-6">Duración máxima de cuotas</mat-label>
+          <input matInput formControlName="duracionMaximaCuotas" />
+        </mat-form-field>
+
+        <mat-form-field color="primary" class="col-6" appearance="fill">
+          <mat-label class="fs-6">Monto Mínimo</mat-label>
+          <input matInput formControlName="montoMinimo" />
+        </mat-form-field>
+
+        <mat-form-field color="primary" class="col-6" appearance="fill">
+          <mat-label class="fs-6">Monto Máximo</mat-label>
+          <input matInput formControlName="montoMaximo" />
+        </mat-form-field>
+
+        <mat-form-field color="primary" class="col-4" appearance="fill">
+          <mat-label class="fs-6">Edad Máxima</mat-label>
+          <input matInput formControlName="edadMaxima" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="text-start col-4">
+          <mat-label class="fs-6">Precancelación</mat-label>
+          <mat-select formControlName="precancelacion">
+            <mat-option value="1"> Activo </mat-option>
+            <mat-option value="0"> Inactivo </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field color="primary" class="col-4" appearance="fill">
+          <mat-label class="fs-6">Cuota mínima de precancelación</mat-label>
+          <input matInput formControlName="precancelacionCuotaMinima" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="text-start col-4">
+          <mat-label class="fs-6">Estado</mat-label>
+          <mat-select formControlName="vigencia">
+            <mat-option value="1"> Activo </mat-option>
+            <mat-option value="0"> Inactivo </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field color="primary" class="col-4" appearance="fill">
+          <mat-label class="fs-6">Multa de precancelación</mat-label>
+          <input matInput formControlName="precancelacionMulta" />
+        </mat-form-field>
+
+        <mat-form-field color="primary" class="col-4" appearance="fill">
+          <mat-label class="fs-6">Costo administrativo</mat-label>
+          <input matInput formControlName="costoAdministrativo" />
+        </mat-form-field>
+      </div>
+
+      <div class="botones">
+        <div>
+          <a routerLink="/listaPlanes">
+            <button type="button" class="btn btn-danger">Cancelar</button>
+          </a>
+          <button class="btn btn-primary" type="submit">Agregar</button>
+        </div>
+      </div>
+    </mat-card>
+  </form>
+</div>

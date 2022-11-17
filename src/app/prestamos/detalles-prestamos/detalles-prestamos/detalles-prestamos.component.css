@@ -1,0 +1,12 @@
+.card-spinner{
+    margin: 0 auto;
+}
+
+.acordeon .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.acordeon .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}

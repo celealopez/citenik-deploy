@@ -1,0 +1,210 @@
+<h1 mat-dialog-title class="text-center">
+    <strong>Detalles préstamo
+      <span *ngIf="prestamoEstaCargado">id: {{prestamo.id}}</span>
+    </strong>
+  </h1>
+  <hr />
+  <mat-dialog-content mat-dialog-content>
+    <div class="card container border border-primary">
+      <div class="card-spinner" *ngIf="!prestamoEstaCargado">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div class="card-body" *ngIf="prestamoEstaCargado">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col-3"></th>
+              <th scope="col-3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <mat-accordion class="acordeon">
+                <mat-expansion-panel (opened)="clientesDesplegado = true"
+                                    (closed)="clientesDesplegado = false">
+                  <mat-expansion-panel-header>
+                    <th scope="row">
+                      <mat-panel-title>
+                        Cliente:
+                      </mat-panel-title>
+                    </th>
+                    <td>
+                      <mat-panel-description>
+                        {{prestamo.cliente.nombre}}
+                      </mat-panel-description>
+                    </td>
+                  </mat-expansion-panel-header>
+                  <tr>
+                    <th scope="row">Fecha de nacimiento:</th>
+                    <td>{{prestamo.cliente.fechaNacimiento| date: "dd/MM/yyyy"}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Cuit</th>
+                    <td>{{prestamo.cliente.cuit}}</td>
+                  </tr>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </tr>
+            <tr>
+              <th scope="row">Fecha de otorgamiento:</th>
+              <td>{{prestamo.fechaOtorgamiento | date: "dd/MM/yyyy"}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Capital:</th>
+              <td>{{prestamo.capital | currency}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Estado:</th>
+              <td>{{prestamo.estado}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Cuotas totales</th>
+              <td>{{prestamo.cuotasTotales}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Cuotas pagas:</th>
+              <td>{{prestamo.cuotasPagas}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Cuotas vencidas impagas</th>
+              <td>{{prestamo.cuotasVencidasImpagas}}</td>
+            </tr>
+            <tr>
+              <mat-accordion class="acordeon">
+                <mat-expansion-panel (opened)="planesDesplegado = true"
+                                    (closed)="planesDesplegado = false">
+                  <mat-expansion-panel-header>
+                    <th scope="row">
+                      <mat-panel-title>
+                        Plan:
+                      </mat-panel-title>
+                    </th>
+                    <td>
+                      <mat-panel-description>
+                        {{prestamo.plan.nombre}}
+                      </mat-panel-description>
+                    </td>
+                  </mat-expansion-panel-header>
+                  <tr>
+                    <th scope="row">Vigencia:</th>
+                    <td>{{prestamo.plan.vigencia ? 'Vigente' : 'No vigente'}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">TNA:</th>
+                    <td>{{prestamo.plan.tna}}%</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Cantidad de cuotas:</th>
+                    <td 
+                      *ngIf="prestamo.plan.duracionMaximaCuotas == prestamo.plan.duracionMinimaCuotas"
+                    >
+                      {{prestamo.plan.duracionMaximaCuotas}}
+                    </td>
+                    <td
+                      *ngIf="prestamo.plan.duracionMaximaCuotas != prestamo.plan.duracionMinimaCuotas"
+                    >
+                      {{prestamo.plan.duracionMaximaCuotas}}
+                      -
+                      {{prestamo.plan.duracionMinimaCuotas}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Rango de montos:</th>
+                    <td>{{prestamo.plan.montoMinimo | currency}}
+                      -
+                      {{prestamo.plan.montoMaximo | currency}}
+                    </td>
+                  </tr>
+                  <tr *ngIf="prestamo.plan.edadMaxima">
+                    <th scope="row">Edad máxima al finalizar:</th>
+                    <td>{{prestamo.plan.edadMaxima}} años</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Precancelación</th>
+                    <td>{{prestamo.plan.precancelacion ? 'Permitida' : 'No permitida'}}</td>
+                  </tr>
+                  <tr *ngIf="prestamo.plan.precancelacion">
+                    <th scope="row">Cuota mínima precancelación:</th>
+                    <td>{{prestamo.plan.precancelacionCuotaMinima}}</td>
+                  </tr>
+                  <tr *ngIf="prestamo.plan.precancelacion">
+                    <th scope="row">Multa por precancelación:</th>
+                    <td>{{prestamo.plan.precancelacionMulta}}%</td>
+                  </tr>
+                  <tr *ngIf="prestamo.plan.costoAdministrativo">
+                    <th scope="row">Costo administrativo:</th>
+                    <td>{{prestamo.plan.costoAdministrativo | currency}}</td>
+                  </tr>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </tr>
+            <tr>
+              <mat-accordion class="acordeon">
+                <mat-expansion-panel (opened)="cuotasDesplegado = true"
+                                    (closed)="cuotasDesplegado = false">
+                  <mat-expansion-panel-header>
+                    <th scope="row">
+                      <mat-panel-title>
+                        Detalle de cuotas
+                      </mat-panel-title>
+                    </th>
+                  </mat-expansion-panel-header>
+                  <div *ngFor="let cuota of prestamo.cuotas">
+                    <tr>
+                      <mat-accordion>
+                        <mat-expansion-panel (opened)="cuotasDetalleDesplegado = true"
+                                            (closed)="cuotasDetalleDesplegado = false">
+                          <mat-expansion-panel-header>
+                            <th scope="row">
+                              <mat-panel-title>
+                                Cuota número:
+                              </mat-panel-title>
+                            </th>
+                            <td>
+                              <mat-panel-description>
+                                {{cuota.cuotaNumero}}
+                              </mat-panel-description>
+                            </td>
+                          </mat-expansion-panel-header>
+                          <tr>
+                            <th scope="row">Fecha de vencimiento:</th>
+                            <td>{{cuota.fechaDeVencimiento| date: "dd/MM/yyyy"}}</td>
+                          </tr>
+                          <tr *ngIf="!esNullOCero(cuota.diasDeDemora)">
+                            <th scope="row">Días de demora:</th>
+                            <td>{{cuota.diasDeDemora}}</td>
+                          </tr>
+                          <tr *ngIf="!esNullOCero(cuota.interesesPunitorios)">
+                            <th scope="row">Intereses punitorios:</th>
+                            <td>{{cuota.interesesPunitorios | currency}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Capital:</th>
+                            <td>{{cuota.capital | currency}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Intereses financieros:</th>
+                            <td>{{cuota.interesesFinancieros | currency}}</td>
+                          </tr>
+                          <tr *ngIf="!esNullOCero(cuota.gastosOtorgamiento)">
+                            <th scope="row">Gastos de otorgamiento:</th>
+                            <td>{{cuota.gastosOtorgamiento | currency}}</td>
+                          </tr>
+                          <tr class="table-secondary">
+                            <th scope="row">Monto total:</th>
+                            <th>{{cuota.montoTotalCuota | currency}}</th>
+                          </tr>
+                        </mat-expansion-panel>
+                      </mat-accordion>
+                    </tr>
+                  </div>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Cerrar</button>
+      </div>

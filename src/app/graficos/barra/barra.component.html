@@ -1,0 +1,9 @@
+<div class="card border-light container ">
+  <h2 class="text-center">Préstamos por rango de capital</h2>
+  <div class="position-absolute top-50 start-50 translate-middle" *ngIf="!canvaEstaCargado">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div *ngIf="canvaEstaCargado">
+    <canvas baseChart type="bar" [data]="datos"></canvas>
+  </div>
+

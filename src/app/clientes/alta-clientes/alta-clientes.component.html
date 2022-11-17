@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <form
+    [formGroup]="formCliente"
+    #formDirective="ngForm"
+    (ngSubmit)="agregarCliente(formCliente, formDirective)"
+  >
+    <mat-card class="mat-elevation-z15">
+      <mat-card-title>Nuevo Cliente</mat-card-title>
+
+      <mat-form-field class="col-10" appearance="fill">
+        <mat-label>Nombre Completo</mat-label>
+        <input matInput formControlName="nombre" />
+      </mat-form-field>
+
+      <mat-form-field color="primary" class="col-10" appearance="fill">
+        <mat-label>Cuit</mat-label>
+        <input matInput formControlName="cuit" />
+      </mat-form-field>
+
+      <mat-form-field class="col-10 mb-2" appearance="fill">
+        <mat-label>Fecha de nacimiento</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="fechaNacimiento"
+          [max]="fechaStrMinima"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div>
+        <a routerLink="/listaClientes">
+          <button type="button" class="btn btn-danger">Cancelar</button>
+        </a>
+        <button class="btn btn-primary col-10" type="submit">Agregar</button>
+      </div>
+    </mat-card>
+  </form>
+</div>

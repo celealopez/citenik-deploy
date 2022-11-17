@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <mat-card class="mat-elevation-z15">
+    <form
+      [formGroup]="formConsulta"
+      #formDirective="ngForm"
+      (ngSubmit)="consultarCuota(formConsulta, formDirective)"
+    >
+      <mat-card-title class="row text-center">Consulta cuotas</mat-card-title>
+
+      <mat-form-field class="row col-6" appearance="fill">
+        <mat-label>Buscar Prestamo</mat-label>
+        <input matInput formControlName="prestamoId" />
+      </mat-form-field>
+
+      <mat-form-field class="row col-6" appearance="fill">
+        <mat-label>Fecha de Pago</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fechaPago" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div>
+        <a routerLink="/graficos">
+          <button type="button" class="btn btn-danger col-6">Cancelar</button>
+        </a>
+        <button class="btn btn-primary col-6" type="submit">Consultar</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,29 @@
+* {
+  margin: 0 auto;
+}
+
+mat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 3rem;
+}
+input {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+button {
+  justify-content: center;
+  width: 300px;
+  margin: 2rem;
+}
+mat-card-title {
+  margin-bottom: 2rem;
+}
+.container {
+  padding-bottom: 3.7rem;
+}
+table {
+  width: 100%;
+}

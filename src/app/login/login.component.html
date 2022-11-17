@@ -1,0 +1,45 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img
+        src="../../assets/citenik.png"
+        id="icon"
+        alt="User Icon"
+        class="mb-2"
+      />
+    </div>
+
+    <!-- Login Form -->
+    <form class="userCtrl">
+      <input
+        [(ngModel)]="user.username"
+        id="login"
+        class="fadeIn second userBtn mb-2"
+        name="login"
+        placeholder="Usuario"
+      />
+      <input
+        type="password"
+        [(ngModel)]="user.password"
+        id="password"
+        class="fadeIn third userBtn mb-2"
+        name="login"
+        placeholder="Contraseña"
+      />
+    </form>
+
+    <div class="userCtrl">
+      <!-- <button  class="btn btn-primary userBtn mb-2" (click)="register(user)">Registrarse</button> -->
+      <button class="btn btn-primary userBtn" (click)="login(user)">
+        Ingresar
+      </button>
+    </div>
+    <!-- Remind Passowrd -->
+    <div id="formFooter" class="mt-2">
+      <!-- <a class="underlineHover" href="#">Forgot Password?</a> -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+canvas {
+  padding-bottom: 0.5rem;
+}
+.card {
+ padding: 3rem;
+ border: 0;
+}
+
+mat-spinner {
+margin: 10rem;
+
+}
+h2{
+padding: 1rem;
+}

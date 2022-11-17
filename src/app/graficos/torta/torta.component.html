@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+
+<mat-card class="mat-elevation-z15">
+  <mat-card-title class="text-center">Gráficos</mat-card-title>
+  <div class="container row">
+    <div class="col-4">
+      <div class="card border-light">
+        <div class="card-body">
+          <div class="position-absolute top-50 start-50 translate-middle" *ngIf="!canvaEstaCargado">
+            <mat-spinner></mat-spinner>
+          </div>
+          <div class="card-body" *ngIf="canvaEstaCargado">
+            <canvas baseChart type="pie" [data]="datos"></canvas></div>
+
+            <h2 class="text-center">Préstamos activos por plan</h2>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-8">
+      <app-barra> </app-barra>
+    </div>
+    <div class="col-4 division">
+      <app-kpi-top-clientes></app-kpi-top-clientes>
+    </div>
+    <div class="col-4 division"><app-kpi-capital> </app-kpi-capital></div>
+    <div class="col-4 division">
+      <app-kpi-top-prestamos></app-kpi-top-prestamos>
+    </div>
+  </div>
+</mat-card>
