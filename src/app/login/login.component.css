@@ -1,12 +1,12 @@
-body {
+/* body {
   height: 100vh;
 }
 
 a {
   color: #92badd;
   display: inline-block;
-  text-decoration: none;
-  font-weight: 400;
+  text-decoration: none; */
+  /* font-weight: 400;
 }
 
 h2 {
@@ -21,7 +21,7 @@ h2 {
 
 /* STRUCTURE */
 
-.wrapper {
+/* .wrapper {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -45,8 +45,8 @@ h2 {
   box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
   text-align: center;
   margin: 0;
-}
-
+} */
+/* 
 #formFooter {
   background-color: #f6f6f6;
   border-top: 1px solid #dce8f1;
@@ -55,10 +55,10 @@ h2 {
   -webkit-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;
   margin: 0;
-}
+} */
 
 /* TABS */
-
+/* 
 h2.inactive {
   color: #cccccc;
 }
@@ -67,7 +67,7 @@ h2.active {
   color: #0d0d0d;
   border-bottom: 2px solid #5fbae9;
   margin: 0;
-}
+} */
 
 /* FORM TYPOGRAPHY*/
 
@@ -91,7 +91,7 @@ h2.active {
     transition: all 0.3s ease-in-out;
   } */
 
-input[type="button"]:hover,
+/* input[type="button"]:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover {
   background-color: white;
@@ -140,12 +140,12 @@ input[type="text"]:focus {
 
 input[type="text"]:placeholder {
   color: #cccccc;
-}
+} */
 
 /* ANIMATIONS */
 
 /* Simple CSS3 Fade-in-down Animation */
-.fadeInDown {
+/* .fadeInDown {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
   -webkit-animation-duration: 1s;
@@ -178,10 +178,10 @@ input[type="text"]:placeholder {
     -webkit-transform: none;
     transform: none;
   }
-}
+} */
 
 /* Simple CSS3 Fade-in Animation */
-@-webkit-keyframes fadeIn {
+/* @-webkit-keyframes fadeIn {
   from {
     opacity: 0;
   }
@@ -204,8 +204,8 @@ input[type="text"]:placeholder {
   to {
     opacity: 1;
   }
-}
-
+}  */
+/* 
 .fadeIn {
   opacity: 0;
   -webkit-animation: fadeIn ease-in 1;
@@ -246,7 +246,7 @@ input[type="text"]:placeholder {
 }
 
 /* Simple CSS3 Fade-in Animation */
-.underlineHover:after {
+/* .underlineHover:after {
   display: block;
   left: 0;
   bottom: -10px;
@@ -269,11 +269,11 @@ input[type="text"]:placeholder {
   width: 100%;
   margin: 0;
   padding: 0;
-}
+} */ 
 
 /* OTHERS */
 
-*:focus {
+/* *:focus {
   outline: none;
 }
 
@@ -286,4 +286,4 @@ input[type="text"]:placeholder {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
